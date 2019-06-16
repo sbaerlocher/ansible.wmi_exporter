@@ -1,0 +1,6 @@
+---
+# tasks file for sbaerlocher.wmi_exporter
+
+- name: Message
+  debug:
+    msg: "Your {{ ansible_system }} is not supported"
