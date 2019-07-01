@@ -78,7 +78,7 @@ wmi_exporter_proxy_username: '{{ default_proxy_username | default(omit) }}'
 wmi_exporter_validate_certs: '{{ default_validate_certs | default(true) }}'
 ```
 
-## Package
+### Package
 
 Download directory for the wmi export installations files.
 
