@@ -1,6 +1,6 @@
 ---
 language: python
-python: "2.7"
+python: '2.7'
 
 # Use the new container infrastructure
 sudo: false
@@ -42,7 +42,10 @@ script:
   - yamllint -c tests/yaml-lint/yamllint.yml .
 
 notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  webhooks:
+    urls:
+      - https://galaxy.ansible.com/api/v1/notifications/
+    on_success: change
   email:
     on_success: never
     on_failure: always
