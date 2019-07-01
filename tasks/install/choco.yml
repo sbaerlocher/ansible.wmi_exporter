@@ -1,0 +1,28 @@
+---
+# tasks file for sbaerlocher.wmi_exporter
+
+- name: 'choco : create package arguments'
+  set_fact:
+    arguments: "{{ arguments + item.arguments + ' '}}"
+  when: item.condition is defined and item.condition
+  vars:
+    arguments: ''
+  with_items:
+    - arguments: '/EnabledCollectors={{ wmi_exporter_enabled_collectors }}'
+      condition: '{{ wmi_exporter_enabled_collectors }}'
+    - arguments: '/ListenAddress={{ wmi_exporter_listen_addr }}'
+      condition: '{{ wmi_exporter_listen_addr }}'
+    - arguments: '/ListenPort={{ wmi_exporter_listen_port }}'
+      condition: '{{ wmi_exporter_listen_port }}'
+    - arguments: '/MetricsPath={{ wmi_exporter_metrics_path }}'
+      condition: '{{ wmi_exporter_listen_port }}'
+    - arguments: '/TextFileDir={{ wmi_exporter_textfile_dir }}'
+      condition: '{{ wmi_exporter_textfile_dir }}'
+    - arguments: '/ExtraFlags={{ wmi_exporter_extra_flags }}'
+      condition: '{{ wmi_exporter_extra_flags }}'
+
+- name: 'choco : install wmi exporter'
+  win_chocolatey:
+    name: prometheus-wmi-exporter.install
+    proxy_url: '{{ wmi_exporter_proxy }}'
+    params: "{{ arguments | default(omit) }}"

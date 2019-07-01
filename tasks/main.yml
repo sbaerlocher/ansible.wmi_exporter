@@ -1,38 +1,17 @@
 ---
 # tasks file for sbaerlocher.wmi_exporter
 
-- name: add OS specific variables
-  include_vars: "{{ loop_vars }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - "{{ ansible_system }}.yml"
-        - "defaults.yml"
-      paths:
-        - "vars"
-  loop_control:
-    loop_var: loop_vars
-  tags:
-    - configuration
-    - packages
+- name: 'main : check if choco exist'
+  win_stat:
+    path: "C:\\ProgramData\\Chocolatey\\bin\\choco.exe"
+  register: register_wmi_exporter_choco_check
 
-- name: include distribution tasks
-  include_tasks: "{{ loop_distribution }}"
-  with_first_found:
-    - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - "{{ ansible_system }}.yml"
-        - "defaults.yml"
-      paths:
-        - "distribution"
-  loop_control:
-    loop_var: loop_distribution
-  tags:
-    - configuration
-    - packages
+- name: 'main : set install type choco'
+  set_fact:
+    wmi_exporter_install_type: 'choco'
+  when: register_wmi_exporter_choco_check.stat.exists
+
+- name: 'main : include install type'
+  include_tasks: 'install/{{ var_filename }}.yml'
+  vars:
+    var_filename: "{{ wmi_exporter_install_type | default('package') }}"
