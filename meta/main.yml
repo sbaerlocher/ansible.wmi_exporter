@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: wmi_exporter
   author: Simon Baerlocher <sbaerlocher@sbaerlocher.ch>
-  description: Ansible roles that wmi exporter installs on a Windows system.
+  description: Ansible roles that installs wmi_exporter on a Windows system.
   license: MIT
   min_ansible_version: 2.7
   platforms:
