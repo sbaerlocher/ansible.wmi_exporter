@@ -1,6 +1,6 @@
 # Ansible Role: wmi_exporter
 
-[![Build Status](https://img.shields.io/travis/sbaerlocher/ansible.wmi_exporter.svg?branch=master&style=popout-square)](https://travis-ci.org/sbaerlocher/ansible.wmi_exporter) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-wmi_exporter-blue.svg?style=popout-square)](https://galaxy.ansible.com/sbaerlocher/wmi_exporter) [![Ansible Role](https://img.shields.io/ansible/role/d/id.svg?style=popout-square)](https://galaxy.ansible.com/sbaerlocher/wmi_exporter)
+[![Build Status](https://img.shields.io/travis/sbaerlocher/ansible.wmi_exporter.svg?branch=master&style=popout-square)](https://travis-ci.org/sbaerlocher/ansible.wmi_exporter) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=popout-square)](https://sbaerlo.ch/licence) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-wmi_exporter-blue.svg?style=popout-square)](https://galaxy.ansible.com/sbaerlocher/wmi_exporter) [![Ansible Role](https://img.shields.io/ansible/role/d/41724.svg?style=popout-square)](https://galaxy.ansible.com/sbaerlocher/wmi_exporter)
 
 ## Description
 
