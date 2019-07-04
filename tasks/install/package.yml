@@ -1,0 +1,48 @@
+---
+# tasks file for sbaerlocher.wmi_exporter
+
+- name: 'package : create download directory'
+  win_file:
+    path: '{{ wmi_exporter_download_directory }}'
+    state: directory
+
+- name: 'package : download wmi_exporter'
+  win_get_url:
+    url: '{{ var_url }}/{{ var_url_file }}'
+    dest: '{{ wmi_exporter_download_directory }}\\wmi_exporter.msi'
+    proxy_url: '{{ wmi_exporter_proxy }}'
+    validate_certs: '{{ wmi_exporter_validate_certs }}'
+  vars:
+    var_url: '{{ var_url_base }}/releases/download/{{ var_url_version }}'
+    var_url_base: https://github.com/martinlindhe/wmi_exporter
+    var_url_version: '/v{{ wmi_exporter_version }}/'
+    var_url_file: '{{ var_url_file_prefix }}-{{ var_url_file_suffix }}'
+    var_url_file_prefix: 'wmi_exporter-{{ wmi_exporter_version }}'
+    var_url_file_suffix: '{{ wmi_exporter_architecture }}.msi'
+
+- name: 'package : create package arguments'
+  set_fact:
+    arguments: "{{ arguments + item.arguments + ' '}}"
+  when: item.condition is defined and item.condition
+  vars:
+    arguments: ''
+  with_items:
+    - arguments: 'ENABLED_COLLECTORS={{ wmi_exporter_enabled_collectors }}'
+      condition: '{{ wmi_exporter_enabled_collectors }}'
+    - arguments: 'LISTEN_ADDR={{ wmi_exporter_listen_addr }}'
+      condition: '{{ wmi_exporter_listen_addr }}'
+    - arguments: 'LISTEN_PORT={{ wmi_exporter_listen_port }}'
+      condition: '{{ wmi_exporter_listen_port }}'
+    - arguments: 'METRICS_PATH={{ wmi_exporter_metrics_path }}'
+      condition: '{{ wmi_exporter_listen_port }}'
+    - arguments: 'TEXTFILE_DIR={{ wmi_exporter_textfile_dir }}'
+      condition: '{{ wmi_exporter_textfile_dir }}'
+    - arguments: 'EXTRA_FLAGS={{ wmi_exporter_extra_flags }}'
+      condition: '{{ wmi_exporter_extra_flags }}'
+
+- name: 'package : install wmi_exporter'
+  win_package:
+    path: '{{ wmi_exporter_download_directory }}\\wmi_exporter.msi'
+    state: present
+    wait: true
+    arguments: '{{ arguments | default(omit) }}'
