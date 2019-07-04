@@ -4,7 +4,7 @@
 
 ## Description
 
-Ansible roles that wmi exporter installs on a Windows system. Optionally with choco or as package.
+Ansible roles that installs wmi_exporter on a Windows system. Optionally with choco or as package.
 
 ## Installation
 
