@@ -102,8 +102,6 @@ wmi_exporter_download_directory: "{{ ansible_env.TEMP }}\\wmi_exporter"
     - sbaerlocher.wmi_exporter
 ```
 
-## Changelog
-
 ## Author
 
 - [Simon Bärlocher](https://sbaerlocher.ch)
