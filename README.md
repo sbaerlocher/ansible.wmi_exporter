@@ -66,10 +66,10 @@ wmi_exporter_extra_flags:
 ```
 
 Whether to ignore existing choco installation and force 'package' type installation. Defaults to `false`.
-```yml
-wmi_exporter_force_package:
-```
 
+```yml
+wmi_exporter_force_package: false
+```
 
 ### Global Variable
 
