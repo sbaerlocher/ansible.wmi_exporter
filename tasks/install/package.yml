@@ -34,7 +34,7 @@
     - arguments: 'LISTEN_PORT={{ wmi_exporter_listen_port }}'
       condition: '{{ wmi_exporter_listen_port }}'
     - arguments: 'METRICS_PATH={{ wmi_exporter_metrics_path }}'
-      condition: '{{ wmi_exporter_listen_port }}'
+      condition: '{{ wmi_exporter_metrics_path }}'
     - arguments: 'TEXTFILE_DIR={{ wmi_exporter_textfile_dir }}'
       condition: '{{ wmi_exporter_textfile_dir }}'
     - arguments: 'EXTRA_FLAGS={{ wmi_exporter_extra_flags }}'
