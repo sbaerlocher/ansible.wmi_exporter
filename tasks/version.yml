@@ -1,0 +1,17 @@
+---
+# tasks file for sbaerlocher.wmi_exporter
+
+- name: 'version : search'
+  uri:
+    url: https://release-monitoring.org/api/project/58765
+    method: GET
+    return_content: true
+    status_code: 200
+    body_format: json
+  register: register_wmi_exporter_version
+  delegate_to: localhost
+
+- name: 'version : set version {{ register_wmi_exporter_version.json.version | default(wmi_exporter_version) }}'
+  set_fact:
+    wmi_exporter_version: '{{ register_wmi_exporter_version.json.version }}'
+  delegate_to: localhost

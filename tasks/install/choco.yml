@@ -25,4 +25,5 @@
   win_chocolatey:
     name: prometheus-wmi-exporter.install
     proxy_url: '{{ wmi_exporter_proxy }}'
-    params: "{{ arguments | default(omit) }}"
+    version: '{{ wmi_exporter_version | default(omit) }}'
+    params: '{{ arguments | default(omit) }}'
