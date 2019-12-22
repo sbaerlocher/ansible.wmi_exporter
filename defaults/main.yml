@@ -1,8 +1,11 @@
 ---
 # defaults file for sbaerlocher.wmi_exporter
 
-# Version and architecture of the wmi exporter to be installed.
-wmi_exporter_version: 0.7.0
+# The latest version of the wmi_exporter is automatically
+# calculated if 'wmi_exporter_version' no set.
+# wmi_exporter_version: 0.9.0
+
+# Architecture of the wmi exporter to be installed.
 wmi_exporter_architecture: amd64
 
 # Windows installation parameters for the wmi_exporter.

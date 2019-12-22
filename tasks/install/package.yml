@@ -13,12 +13,9 @@
     proxy_url: '{{ wmi_exporter_proxy }}'
     validate_certs: '{{ wmi_exporter_validate_certs }}'
   vars:
-    var_url: '{{ var_url_base }}/releases/download/{{ var_url_version }}'
+    var_url: '{{ var_url_base }}/releases/download//v{{ wmi_exporter_version }}/'
     var_url_base: https://github.com/martinlindhe/wmi_exporter
-    var_url_version: '/v{{ wmi_exporter_version }}/'
-    var_url_file: '{{ var_url_file_prefix }}-{{ var_url_file_suffix }}'
-    var_url_file_prefix: 'wmi_exporter-{{ wmi_exporter_version }}'
-    var_url_file_suffix: '{{ wmi_exporter_architecture }}.msi'
+    var_url_file: 'wmi_exporter-{{ wmi_exporter_version }}-{{ wmi_exporter_architecture }}.msi'
 
 - name: 'package : create package arguments'
   set_fact:

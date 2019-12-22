@@ -16,12 +16,15 @@ ansible-galaxy install sbaerlocher.wmi_exporter
 
 ## Role Variables
 
-### Version and Architecture
+### Version
 
-Version and architecture of the wmi exporter to be installed.
+The latest version of the wmi_exporter is automatically calculated if 'wmi_exporter_version' no set.
+
+### Architecture
+
+Architecture of the wmi exporter to be installed.
 
 ```yml
-wmi_exporter_version: 0.7.0
 wmi_exporter_architecture: amd64
 ```
 

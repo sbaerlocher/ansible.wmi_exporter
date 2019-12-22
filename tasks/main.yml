@@ -2,6 +2,10 @@
 # tasks file for sbaerlocher.wmi_exporter
 
 - block:
+    - name: 'main : include version search'
+      include_tasks: version.yml
+      when: wmi_exporter_version is undefined
+
     - name: 'main : check if choco exist'
       win_stat:
         path: "C:\\ProgramData\\Chocolatey\\bin\\choco.exe"
@@ -10,8 +14,9 @@
     - name: 'main : set install type choco'
       set_fact:
         wmi_exporter_install_type: 'choco'
-      when: register_wmi_exporter_choco_check.stat.exists and
-            not wmi_exporter_force_package
+      when: >
+        register_wmi_exporter_choco_check.stat.exists and
+        not wmi_exporter_force_package
 
     - name: 'main : include install type'
       include_tasks: 'install/{{ var_filename }}.yml'
