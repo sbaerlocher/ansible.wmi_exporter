@@ -12,6 +12,7 @@
     dest: '{{ wmi_exporter_download_directory }}\\wmi_exporter.msi'
     proxy_url: '{{ wmi_exporter_proxy }}'
     validate_certs: '{{ wmi_exporter_validate_certs }}'
+    follow_redirects: all
   vars:
     var_url: '{{ var_url_base }}/releases/download//v{{ wmi_exporter_version }}/'
     var_url_base: https://github.com/martinlindhe/wmi_exporter
