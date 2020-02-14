@@ -3,6 +3,12 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 
+## 1.2.1
+
+### Fixed
+
+- Add `follow_redirects` when downloading the msi package, otherwise it will print an error.
+
 ## 1.2.0
 
 ### Added
