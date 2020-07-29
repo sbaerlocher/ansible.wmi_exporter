@@ -5,6 +5,8 @@ and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## 1.3.0
 
+### Fixed
+
 - Fixed molecule files for molecule 3.0, even if no tests are run.
 - Fixed issue #9: change repo url and package name, set new default version to 0.13.0.
 
