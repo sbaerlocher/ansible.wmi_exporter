@@ -15,8 +15,8 @@
     follow_redirects: all
   vars:
     var_url: '{{ var_url_base }}/releases/download//v{{ wmi_exporter_version }}/'
-    var_url_base: https://github.com/martinlindhe/wmi_exporter
-    var_url_file: 'wmi_exporter-{{ wmi_exporter_version }}-{{ wmi_exporter_architecture }}.msi'
+    var_url_base: https://github.com/prometheus-community/windows_exporter
+    var_url_file: 'windows_exporter-{{ wmi_exporter_version }}-{{ wmi_exporter_architecture }}.msi'
 
 - name: 'package : create package arguments'
   set_fact:

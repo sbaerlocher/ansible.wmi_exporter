@@ -3,13 +3,13 @@
 
 # The latest version of the wmi_exporter is automatically
 # calculated if 'wmi_exporter_version' no set.
-# wmi_exporter_version: 0.9.0
+# wmi_exporter_version: 0.13.0
 
 # Architecture of the wmi exporter to be installed.
 wmi_exporter_architecture: amd64
 
 # Windows installation parameters for the wmi_exporter.
-# Link: https://github.com/martinlindhe/wmi_exporter#installation
+# Link: https://github.com/prometheus-community/windows_exporter#installation
 
 # As the `--collectors.enabled` flag, provide a comma-separated
 # list of enabled collectors
