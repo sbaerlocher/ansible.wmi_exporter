@@ -32,7 +32,7 @@ wmi_exporter_architecture: amd64
 
 Windows installation parameters for the wmi_exporter. [Link](https://github.com/martinlindhe/wmi_exporter#installation)
 
-As the `--collectors.enabled` flag, provide a comma-separated list of enabled collectors
+As the `--collectors.enabled` flag, provide a comma-separated list of enabled collectors.
 
 ```yml
 wmi_exporter_enabled_collectors:
@@ -56,7 +56,7 @@ The path at which to serve metrics. Defaults to `/metrics`
 wmi_exporter_metrics_path:
 ```
 
-As the `--collector.textfile.directory` flag, provide a directory to read text files with metrics from
+As the `--collector.textfile.directory` flag, provide a directory to read text files with metrics from.
 
 ```yml
 wmi_exporter_textfile_dir:
@@ -74,8 +74,7 @@ Whether to ignore existing choco installation and force 'package' type installat
 wmi_exporter_force_package: false
 ```
 
-Whether to download the package file locally rather than on the remote end
-Only used if not installing using choco. Defaults to `false`.
+# Download the file on the local end, only used if not installing using choco. Defaults to `false`.
 
 ```yml
 wmi_exporter_local_download: false
