@@ -67,3 +67,10 @@
     state: present
     wait: true
     arguments: '{{ arguments | default(omit) }}'
+
+- name: 'package : cleanup temp dir (localhost)'
+  file:
+    path: "{{ tmpdir_installer.path }}"
+    state: absent
+  delegate_to: localhost
+  when: wmi_exporter_local_download is defined
