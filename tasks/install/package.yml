@@ -17,6 +17,29 @@
     var_url: '{{ var_url_base }}/releases/download//v{{ wmi_exporter_version }}/'
     var_url_base: https://github.com/prometheus-community/windows_exporter
     var_url_file: 'windows_exporter-{{ wmi_exporter_version }}-{{ wmi_exporter_architecture }}.msi'
+  when: not wmi_exporter_local_download
+
+- name: 'package : downloading on localhost'
+  block:
+  - name: 'package : create temp directory (localhost)'
+    tempfile:
+      state: directory
+    register: tmpdir_installer
+    delegate_to: localhost
+  - name: 'package : download wmi_exporter (localhost)'
+    get_url:
+      url: '{{ var_url }}/{{ var_url_file }}'
+      dest: '{{ tmpdir_installer.path }}/wmi_exporter.msi'
+      proxy_url: '{{ wmi_exporter_proxy }}'
+      validate_certs: '{{ wmi_exporter_validate_certs }}'
+      follow_redirects: all
+    vars:
+      var_url: '{{ var_url_base }}/releases/download//v{{ wmi_exporter_version }}/'
+      var_url_base: https://github.com/prometheus-community/windows_exporter
+      var_url_file: 'windows_exporter-{{ wmi_exporter_version }}-{{ wmi_exporter_architecture }}.msi'
+    register: register_wmi_exporter_local_package
+  delegate_to: localhost
+  when: wmi_exporter_local_download
 
 - name: 'package : create package arguments'
   set_fact:

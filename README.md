@@ -74,6 +74,13 @@ Whether to ignore existing choco installation and force 'package' type installat
 wmi_exporter_force_package: false
 ```
 
+Whether to download the package file locally rather than on the remote end
+Only used if not installing using choco. Defaults to `false`.
+
+```yml
+wmi_exporter_local_download: false
+```
+
 ### Global Variable
 
 #### Proxy

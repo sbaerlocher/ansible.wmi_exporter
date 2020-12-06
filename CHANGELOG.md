@@ -3,6 +3,12 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 and [human-readable changelog](https://keepachangelog.com/en/1.0.0/).
 
+## 1.3.1
+
+### Fixed
+
+- Add `wmi_exporter_local_download` when downloading the msi package, to allow downloading locally.
+
 ## 1.3.0
 
 ### Fixed

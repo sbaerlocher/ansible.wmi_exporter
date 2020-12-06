@@ -37,6 +37,9 @@ wmi_exporter_download_directory: "{{ ansible_env.TEMP }}\\wmi_exporter"
 # Whether to force installation by package, i.e ignore existing choco
 wmi_exporter_force_package: false
 
+# Download the file on the local end, used if not installing using choco
+wmi_exporter_local_download: false
+
 # If a proxy is in use this information can be used.
 # By default, proxy settings are taken from the default_* variables,
 # if they are not defined they are ignored.
