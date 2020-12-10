@@ -42,7 +42,14 @@
     win_copy:
       src: '{{ tmpdir_installer.path }}/{{ var_url_file }}'
       dest: '{{ wmi_exporter_download_directory }}\\wmi_exporter.msi'
-  when: wmi_exporter_local_download
+  always:
+  - name: 'package : cleanup temp dir (localhost)'
+    file:
+      path: "{{ tmpdir_installer.path }}"
+      state: absent
+    delegate_to: localhost
+  when: wmi_exporter_local_download is defined
+
 
 - name: 'package : create package arguments'
   set_fact:
@@ -70,10 +77,3 @@
     state: present
     wait: true
     arguments: '{{ arguments | default(omit) }}'
-
-- name: 'package : cleanup temp dir (localhost)'
-  file:
-    path: "{{ tmpdir_installer.path }}"
-    state: absent
-  delegate_to: localhost
-  when: wmi_exporter_local_download is defined
