@@ -23,7 +23,7 @@
 
 - name: 'choco : install wmi exporter'
   win_chocolatey:
-    name: prometheus-wmi-exporter.install
+    name: prometheus-windows-exporter.install
     proxy_url: '{{ wmi_exporter_proxy }}'
     version: '{{ wmi_exporter_version | default(omit) }}'
     params: '{{ arguments | default(omit) }}'
